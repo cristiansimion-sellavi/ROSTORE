@@ -1,16 +1,27 @@
 /* =========================================
-   SELLAVI GLOBAL THEME - DIGIDOP INSPIRED
-   Se aplică DOAR când body are clasa .dd-theme
+   ADMINSELLAVI THEME - SAFE VERSION
+   Doar skin (culori, font, umbre). Fără layout/grid.
 ========================================= */
+
+/* ===== BODY & GLOBAL ===== */
 
 body.dd-theme {
   margin: 0;
   padding: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
     "Segoe UI", sans-serif;
-  color: #020617;
-  background: radial-gradient(circle at top left, #f5f7ff 0, #edf2ff 25%, #f9fafb 60%, #e2e8f0 100%);
+  color: #0f172a;
+  background: radial-gradient(circle at top left, #f4f6ff 0, #edf2ff 25%, #f9fafb 60%, #e2e8f0 100%);
   -webkit-font-smoothing: antialiased;
+}
+
+body.dd-theme a {
+  color: inherit;
+  text-decoration: none;
+}
+
+body.dd-theme a:hover {
+  text-decoration: none;
 }
 
 /* Scrollbar mai finuț */
@@ -25,19 +36,35 @@ body.dd-theme::-webkit-scrollbar-thumb {
   border-radius: 999px;
 }
 
-/* Linkuri generice */
-body.dd-theme a {
-  color: inherit;
-  text-decoration: none;
-}
-body.dd-theme a:hover {
-  text-decoration: none;
+/* Titluri & texte */
+
+body.dd-theme h1,
+body.dd-theme .page-title {
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  font-weight: 800;
+  color: #020617;
 }
 
-/* =========================================
-   CONTAINERE & TEXT GLOBAL
-========================================= */
+body.dd-theme h2 {
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-weight: 700;
+  color: #020617;
+}
 
+body.dd-theme h3,
+body.dd-theme h4 {
+  font-weight: 600;
+  color: #020617;
+}
+
+body.dd-theme p {
+  line-height: 1.6;
+  color: #334155;
+}
+
+/* Containere */
 body.dd-theme .page-wrapper,
 body.dd-theme .site-wrapper,
 body.dd-theme .content,
@@ -49,456 +76,216 @@ body.dd-theme .wrapper {
   padding-inline: 20px;
 }
 
-/* Titluri mari, tip agency */
-body.dd-theme h1,
-body.dd-theme .page-title {
-  font-size: clamp(2.3rem, 4vw, 3.2rem);
-  line-height: 1.05;
-  letter-spacing: 0.02em;
-  font-weight: 800;
-}
-body.dd-theme h2 {
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  font-weight: 700;
-}
-body.dd-theme h3,
-body.dd-theme h4 {
-  font-weight: 600;
-}
-
-/* Paragrafe */
-body.dd-theme p {
-  line-height: 1.6;
-  color: #334155;
-}
-
 /* =========================================
-   HEADER / NAV - glass + gradient underline
+   HEADER - stil gen Hongo: simplu, curat
 ========================================= */
 
 body.dd-theme header,
 body.dd-theme .site-header,
 body.dd-theme .header {
-  position: sticky;
-  top: 0;
-  z-index: 30;
-  backdrop-filter: blur(16px);
-  background: linear-gradient(
-      to bottom,
-      rgba(15, 23, 42, 0.86),
-      rgba(15, 23, 42, 0.9)
-    );
-  border-bottom: 1px solid rgba(148, 163, 184, 0.35);
-  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.55);
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
 }
 
-body.dd-theme .site-header-inner,
-body.dd-theme .header__inner,
-body.dd-theme .header .container,
-body.dd-theme header > .container {
-  max-width: 1180px;
-  margin: 0 auto;
+/* Liniile din header nu modifică layout-ul, doar spacing & culori */
+body.dd-theme header a,
+body.dd-theme .header a {
+  color: #111827;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+body.dd-theme header a:hover,
+body.dd-theme .header a:hover {
+  color: #4f46e5;
+}
+
+/* Bara principală (logo + meniu + coș) */
+body.dd-theme .top-panel,
+body.dd-theme .header-middle,
+body.dd-theme .header-main {
   padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  gap: 24px;
 }
 
-/* Logo */
+/* Logo existent – doar mărime & spațiere */
 body.dd-theme .logo,
 body.dd-theme .site-logo,
 body.dd-theme .header-logo {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
-  font-weight: 800;
-  font-size: 1rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #e5edff;
+  gap: 8px;
 }
+
 body.dd-theme .logo img,
 body.dd-theme .site-logo img,
 body.dd-theme .header-logo img {
-  max-height: 32px;
+  max-height: 30px;
   width: auto;
 }
 
-/* Meniu principal */
-body.dd-theme nav,
-body.dd-theme .main-nav,
+/* Meniu principal: doar spacing între iteme */
+body.dd-theme nav ul,
 body.dd-theme .main-menu,
 body.dd-theme .menu {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  font-size: 0.85rem;
-  text-transform: none;
+  list-style: none;
 }
 
-body.dd-theme nav a,
-body.dd-theme .main-menu a,
-body.dd-theme .menu a {
-  color: #e2e8f0;
-  opacity: 0.8;
-  padding: 6px 10px;
-  border-radius: 999px;
-  transition: all 0.18s ease-out;
+body.dd-theme nav ul li,
+body.dd-theme .main-menu li,
+body.dd-theme .menu li {
+  display: inline-block;
+  margin: 0 10px;
 }
 
-body.dd-theme nav a:hover,
-body.dd-theme .main-menu a:hover,
-body.dd-theme .menu a:hover {
-  opacity: 1;
-  background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.1));
-}
-
-/* Zona dreapta: cont, coș etc. */
-body.dd-theme .header-icons,
-body.dd-theme .header__controls,
-body.dd-theme .header-right,
-body.dd-theme .top-panel__right {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-body.dd-theme .header-icon-btn,
-body.dd-theme .cart-icon,
-body.dd-theme .account-icon,
-body.dd-theme .top-panel__phone {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 32px;
-  height: 32px;
-  padding-inline: 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.6);
-  color: #e2e8f0;
+/* Top links (Despre noi, Contact, limbă) */
+body.dd-theme .top-panel a,
+body.dd-theme .top-links a {
   font-size: 0.8rem;
-  background: radial-gradient(circle at top left, rgba(30, 64, 175, 0.8), rgba(15, 23, 42, 1));
-  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.8);
-  transition: all 0.2s ease-out;
+  color: #64748b;
 }
 
-body.dd-theme .header-icon-btn:hover,
-body.dd-theme .cart-icon:hover,
-body.dd-theme .account-icon:hover,
-body.dd-theme .top-panel__phone:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
+body.dd-theme .top-panel a:hover,
+body.dd-theme .top-links a:hover {
+  color: #4f46e5;
 }
 
-/* =========================================
-   HERO / BANNERE EXISTENTE
-========================================= */
+/* Buton coș + autentificare – badge mai curat */
 
-body.dd-theme .hero,
-body.dd-theme .main-slider,
-body.dd-theme .banner,
-body.dd-theme .top-banner,
-body.dd-theme .home-top {
-  margin-top: 26px;
-  margin-bottom: 32px;
-  border-radius: 30px;
-  background: radial-gradient(circle at 0 0, #4f46e5 0, #1d4ed8 22%, #0f172a 60%, #020617 100%);
-  color: #e5edff;
-  padding: 30px 30px 26px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 28px 70px rgba(15, 23, 42, 0.95);
-}
-
-body.dd-theme .hero::after,
-body.dd-theme .main-slider::after,
-body.dd-theme .banner::after {
-  content: "";
-  position: absolute;
-  inset: -40%;
-  background:
-    radial-gradient(circle at 80% 0, rgba(56, 189, 248, 0.35), transparent 60%),
-    radial-gradient(circle at 0 100%, rgba(244, 114, 182, 0.27), transparent 55%);
-  opacity: 0.85;
-  mix-blend-mode: screen;
-  pointer-events: none;
-}
-
-body.dd-theme .hero * ,
-body.dd-theme .main-slider * ,
-body.dd-theme .banner * {
-  position: relative;
-  z-index: 1;
-}
-
-/* Text în hero */
-body.dd-theme .hero h1,
-body.dd-theme .banner h1,
-body.dd-theme .hero .page-title {
-  color: #f9fafb;
-}
-body.dd-theme .hero p,
-body.dd-theme .banner p {
-  color: #e5edff;
-  max-width: 480px;
-}
-
-/* =========================================
-   BUTOANE GLOBALE
-========================================= */
-
-body.dd-theme a.button,
-body.dd-theme .btn,
-body.dd-theme button,
-body.dd-theme .button,
-body.dd-theme input[type="submit"],
-body.dd-theme .add-to-cart {
+body.dd-theme [href*="cart"],
+body.dd-theme [href*="Cos"],
+body.dd-theme .cart-link,
+body.dd-theme .cart-button {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 6px;
-  padding: 10px 20px;
+  padding: 4px 12px;
   border-radius: 999px;
-  border: none;
-  font-size: 0.85rem;
-  letter-spacing: 0.03em;
-  font-weight: 600;
-  text-transform: none;
-  cursor: pointer;
-  background: linear-gradient(135deg, #4f46e5, #6366f1, #22d3ee);
+  background: #22c55e;
   color: #f9fafb !important;
-  box-shadow: 0 18px 35px rgba(79, 70, 229, 0.5);
-  transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, filter 0.15s ease-out;
+  font-size: 0.86rem;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(34, 197, 94, 0.4);
 }
 
-body.dd-theme a.button:hover,
-body.dd-theme .btn:hover,
-body.dd-theme button:hover,
-body.dd-theme .button:hover,
-body.dd-theme input[type="submit"]:hover,
-body.dd-theme .add-to-cart:hover {
-  transform: translateY(-1px);
+body.dd-theme [href*="cart"]:hover,
+body.dd-theme [href*="Cos"]:hover,
+body.dd-theme .cart-link:hover,
+body.dd-theme .cart-button:hover {
   filter: brightness(1.05);
-  box-shadow: 0 24px 55px rgba(79, 70, 229, 0.7);
 }
 
-/* Butoane secundare (contur) */
-body.dd-theme .btn-secondary,
-body.dd-theme .button.secondary,
-body.dd-theme .button-outline {
-  background: transparent;
-  color: #0f172a !important;
-  border: 1px solid rgba(148, 163, 184, 0.9);
-  box-shadow: none;
+/* "Autentificare / Înregistrare" – text mai discret + icon vibe */
+body.dd-theme a[href*="login"],
+body.dd-theme a[href*="autentificare"],
+body.dd-theme a[href*="cont"] {
+  position: relative;
+  padding-left: 20px;
 }
-body.dd-theme .btn-secondary:hover,
-body.dd-theme .button.secondary:hover,
-body.dd-theme .button-outline:hover {
-  background: rgba(248, 250, 252, 0.85);
+
+body.dd-theme a[href*="login"]::before,
+body.dd-theme a[href*="autentificare"]::before,
+body.dd-theme a[href*="cont"]::before {
+  content: "👤";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.9rem;
 }
 
 /* =========================================
-   GRID PRODUSE / CARDURI
+   CARDURI PRODUSE - doar skin, fără grid / display
 ========================================= */
 
+/* Container general de produse (home & listă) */
 body.dd-theme .products,
 body.dd-theme .product-list,
-body.dd-theme .product-grid,
-body.dd-theme .catalog__products {
-  margin-top: 22px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-  gap: 22px;
+body.dd-theme .catalog-products,
+body.dd-theme .home-products {
+  margin-top: 20px;
 }
 
-/* Card produs */
+/* Card generic – ne legăm de clasele care conțin "product" dar nu schimbăm display/width */
 body.dd-theme .product,
 body.dd-theme .product-item,
-body.dd-theme .product-card,
-body.dd-theme .catalog-item {
-  background: radial-gradient(circle at top left, #ffffff 0, #f8fafc 60%, #eef2ff 100%);
-  border-radius: 22px;
-  padding: 14px 14px 16px;
+body.dd-theme .product_box,
+body.dd-theme .product-box,
+body.dd-theme [class*="product-card"],
+body.dd-theme .products .item {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 12px 12px 14px;
   border: 1px solid rgba(203, 213, 225, 0.9);
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
   position: relative;
   overflow: hidden;
   transition: transform 0.16s ease-out, box-shadow 0.16s ease-out,
     border-color 0.16s ease-out;
 }
 
+/* Hover – card se ridică puțin, fără 3D hardcore */
 body.dd-theme .product:hover,
 body.dd-theme .product-item:hover,
-body.dd-theme .product-card:hover,
-body.dd-theme .catalog-item:hover {
-  transform: translateY(-6px);
+body.dd-theme .product_box:hover,
+body.dd-theme .product-box:hover,
+body.dd-theme [class*="product-card"]:hover,
+body.dd-theme .products .item:hover {
+  transform: translateY(-4px);
   border-color: rgba(129, 140, 248, 0.95);
-  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.18);
+  box-shadow: 0 22px 45px rgba(15, 23, 42, 0.18);
 }
 
-/* 3D card (combinat cu JS) */
-body.dd-theme .dd-card-3d {
-  transform-origin: center center;
-  transform-style: preserve-3d;
-}
-
-/* Imagine produs */
+/* Imagini – doar colțuri rotunjite, fără aspect-ratio/hărțuială */
 body.dd-theme .product img,
 body.dd-theme .product-item img,
-body.dd-theme .product-card img,
-body.dd-theme .catalog-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 18px;
-  aspect-ratio: 4/5;
+body.dd-theme .product-box img,
+body.dd-theme .product_box img,
+body.dd-theme [class*="product-card"] img,
+body.dd-theme .products .item img {
+  border-radius: 16px;
 }
 
-/* Container imagine, dacă există */
-body.dd-theme .product__image,
-body.dd-theme .product-card__image,
-body.dd-theme .catalog-item__image,
-body.dd-theme .product-photo {
-  border-radius: 18px;
-  overflow: hidden;
-  background: radial-gradient(circle at top, #e5e7eb, #e2e8f0);
-  position: relative;
-}
-
-/* Badge mic (nou, promo etc.) */
-body.dd-theme .product-label,
-body.dd-theme .product-badge,
-body.dd-theme .product-tag,
-body.dd-theme .catalog-item__label {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  padding: 5px 10px;
-  border-radius: 999px;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  background: rgba(15, 23, 42, 0.86);
-  color: #f9fafb;
-}
-
-/* Info produs */
-body.dd-theme .product__info,
-body.dd-theme .product-info,
-body.dd-theme .product-card__info,
-body.dd-theme .catalog-item__info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-top: 8px;
-}
-
-/* Nume produs */
-body.dd-theme .product__name,
+/* Nume produs & preț – un pic de hierarchy */
+body.dd-theme .product h4,
 body.dd-theme .product-title,
 body.dd-theme .product-name,
-body.dd-theme .catalog-item__title {
-  font-size: 0.94rem;
+body.dd-theme .products .item h4 {
+  font-size: 0.95rem;
   font-weight: 600;
+  margin-top: 8px;
+  margin-bottom: 4px;
   color: #0f172a;
 }
 
-/* Meta + preț */
-body.dd-theme .product__bottom,
-body.dd-theme .product-meta,
-body.dd-theme .product-card__bottom,
-body.dd-theme .catalog-item__bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 0.82rem;
-  color: #64748b;
-}
-
-/* Preț */
-body.dd-theme .product__price,
 body.dd-theme .price,
 body.dd-theme .product-price,
-body.dd-theme .catalog-item__price {
+body.dd-theme .products .item .price {
   font-weight: 700;
   color: #111827;
 }
 
-/* CTA mic (text sub preț) */
-body.dd-theme .product__cta,
-body.dd-theme .product-card__cta,
-body.dd-theme .catalog-item__cta {
-  margin-top: 6px;
-  font-size: 0.78rem;
-  color: #4f46e5;
+/* Buton "Adăugați în coș" din card */
+body.dd-theme .products .item button,
+body.dd-theme .products .item input[type="submit"],
+body.dd-theme .product .button,
+body.dd-theme .product .btn {
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #4f46e5, #22c55e);
+  color: #f9fafb;
+  padding: 8px 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 14px 30px rgba(79, 70, 229, 0.5);
 }
 
-/* =========================================
-   PAGINA DE PRODUS (detalii)
-========================================= */
-
-body.dd-theme .product-page,
-body.dd-theme .product-details,
-body.dd-theme .product-view {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-  gap: 30px;
-  margin-top: 26px;
-}
-
-/* Poza mare produs */
-body.dd-theme .product-gallery,
-body.dd-theme .product-images,
-body.dd-theme .product-view__gallery {
-  border-radius: 26px;
-  overflow: hidden;
-  background: radial-gradient(circle at top left, #e5edff, #e0f2fe);
-  padding: 12px;
-}
-
-/* Panou info produs */
-body.dd-theme .product-summary,
-body.dd-theme .product-info-box,
-body.dd-theme .product-view__summary {
-  background: rgba(255, 255, 255, 0.98);
-  border-radius: 26px;
-  padding: 22px 22px 20px;
-  border: 1px solid rgba(203, 213, 225, 0.95);
-  box-shadow: 0 24px 50px rgba(15, 23, 42, 0.12);
-}
-
-/* =========================================
-   FORMURI / INPUTURI
-========================================= */
-
-body.dd-theme input[type="text"],
-body.dd-theme input[type="email"],
-body.dd-theme input[type="tel"],
-body.dd-theme input[type="password"],
-body.dd-theme input[type="number"],
-body.dd-theme textarea,
-body.dd-theme select {
-  border-radius: 14px;
-  border: 1px solid #cbd5e1;
-  padding: 10px 12px;
-  font-size: 0.9rem;
-  background: rgba(255, 255, 255, 0.96);
-  transition: border-color 0.15s ease-out, box-shadow 0.15s ease-out,
-    background 0.15s ease-out;
-}
-
-body.dd-theme input:focus,
-body.dd-theme textarea:focus,
-body.dd-theme select:focus {
-  outline: none;
-  border-color: #6366f1;
-  background: #ffffff;
-  box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.4),
-    0 12px 30px rgba(148, 163, 184, 0.35);
+body.dd-theme .products .item button:hover,
+body.dd-theme .products .item input[type="submit"]:hover,
+body.dd-theme .product .button:hover,
+body.dd-theme .product .btn:hover {
+  filter: brightness(1.05);
 }
 
 /* =========================================
@@ -510,35 +297,37 @@ body.dd-theme .site-footer,
 body.dd-theme .footer {
   margin-top: 40px;
   padding: 26px 20px 32px;
-  background: radial-gradient(circle at top, #020617 0, #020617 40%, #020617 100%);
+  background: #020617;
   color: #e5e7eb;
   border-top: 1px solid rgba(51, 65, 85, 0.9);
 }
 
-body.dd-theme .footer a {
+body.dd-theme footer a {
   color: #cbd5f5;
 }
-body.dd-theme .footer a:hover {
+
+body.dd-theme footer a:hover {
   color: #e5edff;
 }
 
 /* =========================================
-   FADE-IN ANIMATIONS
+   FADE-IN (safe)
 ========================================= */
 
 body.dd-theme .dd-fade {
   opacity: 0;
-  transform: translateY(26px);
+  transform: translateY(18px);
   transition: opacity 0.55s cubic-bezier(0.18, 0.89, 0.32, 1.2),
     transform 0.55s cubic-bezier(0.18, 0.89, 0.32, 1.2);
 }
+
 body.dd-theme .dd-fade.dd-in-view {
   opacity: 1;
   transform: translateY(0);
 }
 
 /* =========================================
-   RESPONSIVE
+   RESPONSIVE (doar spacing, nu umblăm la griduri)
 ========================================= */
 
 @media (max-width: 960px) {
@@ -548,20 +337,7 @@ body.dd-theme .dd-fade.dd-in-view {
   body.dd-theme main,
   body.dd-theme .container,
   body.dd-theme .wrapper {
-    padding-inline: 16px;
-  }
-
-  body.dd-theme .product-page,
-  body.dd-theme .product-details,
-  body.dd-theme .product-view {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  body.dd-theme .products,
-  body.dd-theme .product-list,
-  body.dd-theme .product-grid,
-  body.dd-theme .catalog__products {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding-inline: 14px;
   }
 }
 
@@ -569,13 +345,6 @@ body.dd-theme .dd-fade.dd-in-view {
   body.dd-theme header,
   body.dd-theme .site-header,
   body.dd-theme .header {
-    position: sticky;
-  }
-
-  body.dd-theme .products,
-  body.dd-theme .product-list,
-  body.dd-theme .product-grid,
-  body.dd-theme .catalog__products {
-    grid-template-columns: minmax(0, 1fr);
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.16);
   }
 }
