@@ -1,35 +1,79 @@
-/* ========== RESET BASIC ========== */
-.shuffle-page * {
-  box-sizing: border-box;
+/* =========================================
+   SHUFFLE THEME – GLOBAL WRAPPER
+   Totul e sub .shuffle-theme ca să nu stricăm admin-ul
+========================================= */
+
+.shuffle-theme,
+.shuffle-theme body {
   margin: 0;
   padding: 0;
-}
-
-.shuffle-page {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background-color: #050505;
   color: #f5f5f5;
 }
 
-/* Container general */
-.shuffle-container {
+/* Fallback dacă body nu ia clasa direct */
+body.shuffle-theme {
+  background-color: #050505;
+  color: #f5f5f5;
+}
+
+/* =========================================
+   LAYOUT & TEXT GLOBAL
+========================================= */
+
+.shuffle-theme a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.shuffle-theme a:hover {
+  text-decoration: none;
+}
+
+.shuffle-theme .page-wrapper,
+.shuffle-theme .site-wrapper,
+.shuffle-theme .content,
+.shuffle-theme main {
   max-width: 1200px;
   margin: 0 auto;
   padding: 24px 16px 64px;
 }
 
-/* ========== HEADER ========== */
-
-.shuffle-header {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  background: rgba(5, 5, 5, 0.96);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+/* Titluri mari tip Shuffle */
+.shuffle-theme h1,
+.shuffle-theme .page-title,
+.shuffle-theme .section-title {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
 }
 
-.shuffle-header-inner {
+/* Subtitluri / texte explicative */
+.shuffle-theme p {
+  line-height: 1.5;
+  color: #d4d4d8;
+}
+
+/* =========================================
+   HEADER / NAV
+========================================= */
+
+.shuffle-theme header,
+.shuffle-theme .site-header,
+.shuffle-theme .header {
+  position: sticky;
+  top: 0;
+  z-index: 25;
+  background: rgba(5, 5, 5, 0.96);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.shuffle-theme .site-header-inner,
+.shuffle-theme .header__inner,
+.shuffle-theme .header .container,
+.shuffle-theme .top-panel {
   max-width: 1200px;
   margin: 0 auto;
   padding: 12px 16px;
@@ -39,14 +83,29 @@
   gap: 24px;
 }
 
-.shuffle-logo {
+/* Logo text fallback (dacă nu e poză) */
+.shuffle-theme .logo,
+.shuffle-theme .site-logo,
+.shuffle-theme .header-logo {
   font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   font-size: 0.95rem;
 }
 
-.shuffle-nav {
+/* Dacă logo-ul e imagine, îl micșorăm un pic */
+.shuffle-theme .logo img,
+.shuffle-theme .site-logo img,
+.shuffle-theme .header-logo img {
+  max-height: 26px;
+  width: auto;
+}
+
+/* Meniu principal */
+.shuffle-theme nav,
+.shuffle-theme .main-nav,
+.shuffle-theme .menu,
+.shuffle-theme .main-menu {
   display: flex;
   align-items: center;
   gap: 18px;
@@ -55,313 +114,230 @@
   letter-spacing: 0.16em;
 }
 
-.shuffle-nav a {
+.shuffle-theme nav a,
+.shuffle-theme .main-menu a,
+.shuffle-theme .menu a {
   color: #f5f5f5;
-  text-decoration: none;
   opacity: 0.64;
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.shuffle-nav a:hover {
+.shuffle-theme nav a:hover,
+.shuffle-theme .main-menu a:hover,
+.shuffle-theme .menu a:hover {
   opacity: 1;
   transform: translateY(-1px);
 }
 
-.shuffle-actions {
+/* Zona de iconițe (cart, account etc) – foarte generic */
+.shuffle-theme .header-icons,
+.shuffle-theme .header__controls,
+.shuffle-theme .header-right,
+.shuffle-theme .top-panel__right {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
-.shuffle-icon-btn {
-  width: 34px;
-  height: 34px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8rem;
-  opacity: 0.8;
-  cursor: pointer;
-  background: transparent;
-  transition: all 0.2s ease;
-}
-
-.shuffle-icon-btn:hover {
-  opacity: 1;
-  border-color: rgba(139, 92, 246, 0.8);
-}
-
-/* Burger pe mobil */
-.shuffle-burger {
-  display: none;
+/* Butonaș rotund pentru iconițe */
+.shuffle-theme .header-icon-btn,
+.shuffle-theme .header__icon,
+.shuffle-theme .cart-icon,
+.shuffle-theme .account-icon {
   width: 32px;
   height: 32px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.18);
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  font-size: 0.8rem;
+  background: transparent;
+  opacity: 0.8;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.shuffle-burger-lines {
-  width: 16px;
-  height: 10px;
-  position: relative;
+.shuffle-theme .header-icon-btn:hover,
+.shuffle-theme .header__icon:hover,
+.shuffle-theme .cart-icon:hover,
+.shuffle-theme .account-icon:hover {
+  opacity: 1;
+  border-color: rgba(139, 92, 246, 0.85);
 }
 
-.shuffle-burger-lines span {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 1.6px;
-  border-radius: 999px;
-  background: #f5f5f5;
-}
+/* =========================================
+   BANNER/HERO EXISTENT
+   (orice slider/banner de pe home îl îmbrăcăm Shuffle)
+========================================= */
 
-.shuffle-burger-lines span:nth-child(1) { top: 0; }
-.shuffle-burger-lines span:nth-child(2) { top: 4px; }
-.shuffle-burger-lines span:nth-child(3) { top: 8px; }
-
-/* ========== HERO ========== */
-
-.shuffle-main {
-  padding-top: 24px;
-}
-
-.shuffle-hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
-  gap: 32px;
-  align-items: stretch;
-  margin-bottom: 40px;
-}
-
-.shuffle-hero-card {
+.shuffle-theme .hero,
+.shuffle-theme .main-slider,
+.shuffle-theme .banner-slider,
+.shuffle-theme .home-top,
+.shuffle-theme .top-banner {
+  margin-top: 24px;
+  margin-bottom: 32px;
+  border-radius: 26px;
+  overflow: hidden;
   background: radial-gradient(circle at top left, #18181b, #020617);
-  border-radius: 28px;
-  padding: 28px 24px 24px;
   border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.6);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.65);
 }
 
-.shuffle-badge {
+/* Text peste banner */
+.shuffle-theme .hero__content,
+.shuffle-theme .banner__content,
+.shuffle-theme .slider-caption,
+.shuffle-theme .home-top__content {
+  padding: 26px 26px 22px;
+}
+
+/* Badge mic tip „New drop” */
+.shuffle-theme .hero__label,
+.shuffle-theme .banner__label,
+.shuffle-theme .top-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 4px 10px;
   border-radius: 999px;
   background: rgba(139, 92, 246, 0.12);
-  border: 1px solid rgba(139, 92, 246, 0.5);
+  border: 1px solid rgba(139, 92, 246, 0.55);
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
-.shuffle-badge-dot {
+.shuffle-theme .hero__label::before,
+.shuffle-theme .banner__label::before,
+.shuffle-theme .top-badge::before {
+  content: "";
   width: 6px;
   height: 6px;
   border-radius: 999px;
   background: #a855f7;
 }
 
-.shuffle-hero-title {
-  font-size: clamp(2.2rem, 4vw, 3.1rem);
-  line-height: 1;
+/* Titlu mare hero */
+.shuffle-theme .hero__title,
+.shuffle-theme .banner__title,
+.shuffle-theme .home-top__title {
+  font-size: clamp(2.1rem, 4vw, 3rem);
   text-transform: uppercase;
   letter-spacing: 0.12em;
   margin-bottom: 10px;
 }
 
-.shuffle-hero-subtitle {
+/* Subtext */
+.shuffle-theme .hero__subtitle,
+.shuffle-theme .banner__subtitle,
+.shuffle-theme .home-top__subtitle {
   font-size: 0.95rem;
-  opacity: 0.72;
   max-width: 360px;
-  margin-bottom: 22px;
+  color: #e4e4e7;
+  opacity: 0.75;
 }
 
-.shuffle-hero-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 20px;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  opacity: 0.7;
-  margin-bottom: 24px;
-}
-
-.shuffle-hero-actions {
+/* Butoane din hero */
+.shuffle-theme .hero__actions,
+.shuffle-theme .banner__actions,
+.shuffle-theme .home-top__actions {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
+  margin-top: 18px;
 }
 
-.shuffle-btn-primary {
+/* = Buton principal (mov gradient) */
+.shuffle-theme .btn-primary,
+.shuffle-theme .button--primary,
+.shuffle-theme .hero__btn-primary,
+.shuffle-theme .banner__btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
   padding: 11px 22px;
   border-radius: 999px;
   border: none;
-  text-decoration: none;
-  font-size: 0.82rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: #050505;
+  font-size: 0.8rem;
   background: linear-gradient(135deg, #a855f7, #6366f1);
+  color: #050505 !important;
   cursor: pointer;
   box-shadow: 0 14px 30px rgba(88, 28, 135, 0.55);
   transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
 }
 
-.shuffle-btn-primary:hover {
+.shuffle-theme .btn-primary:hover,
+.shuffle-theme .button--primary:hover,
+.shuffle-theme .hero__btn-primary:hover,
+.shuffle-theme .banner__btn-primary:hover {
   transform: translateY(-1px);
-  filter: brightness(1.04);
-  box-shadow: 0 18px 44px rgba(76, 29, 149, 0.8);
+  filter: brightness(1.05);
+  box-shadow: 0 18px 44px rgba(76, 29, 149, 0.85);
 }
 
-.shuffle-btn-secondary {
+/* = Buton secundar (contur) */
+.shuffle-theme .btn-secondary,
+.shuffle-theme .button--secondary,
+.shuffle-theme .hero__btn-secondary,
+.shuffle-theme .banner__btn-secondary {
   padding: 11px 18px;
   border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.5);
+  border: 1px solid rgba(148, 163, 184, 0.55);
   background: transparent;
-  color: #e5e7eb;
+  color: #e5e7eb !important;
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  opacity: 0.85;
+  gap: 6px;
+  opacity: 0.9;
   transition: opacity 0.15s ease, background 0.15s ease;
 }
 
-.shuffle-btn-secondary:hover {
+.shuffle-theme .btn-secondary:hover,
+.shuffle-theme .button--secondary:hover,
+.shuffle-theme .hero__btn-secondary:hover,
+.shuffle-theme .banner__btn-secondary:hover {
   opacity: 1;
-  background: rgba(15, 23, 42, 0.9);
+  background: rgba(15, 23, 42, 0.95);
 }
 
-/* ========== HERO MEDIA ========== */
+/* =========================================
+   PRODUCT GRID – CARDURI TIP SHUFFLE
+========================================= */
 
-.shuffle-hero-media {
-  position: relative;
-  border-radius: 28px;
-  overflow: hidden;
-  background: radial-gradient(circle at 10% 0, #27272a, #020617);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+.shuffle-theme .products,
+.shuffle-theme .product-list,
+.shuffle-theme .product-grid,
+.shuffle-theme .catalog__products {
+  margin-top: 16px;
 }
 
-.shuffle-hero-image {
-  position: absolute;
-  inset: 0;
-  background-image: url("https://images.pexels.com/photos/7671166/pexels-photo-7671166.jpeg?auto=compress&cs=tinysrgb&w=1200");
-  background-size: cover;
-  background-position: center;
-  filter: saturate(1.05);
-}
-
-.shuffle-hero-gradient {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at bottom, rgba(15, 23, 42, 0.7), transparent 55%);
-}
-
-.shuffle-hero-label {
-  position: absolute;
-  left: 20px;
-  bottom: 18px;
-  padding: 6px 11px;
-  border-radius: 999px;
-  background: rgba(15, 23, 42, 0.9);
-  color: #e5e7eb;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  opacity: 0.9;
-}
-
-/* ========== MARQUEE ========== */
-
-.shuffle-marquee {
-  margin: 8px 0 32px;
-  border-block: 1px solid rgba(55, 65, 81, 0.7);
-  background: radial-gradient(circle at center, #020617, #020617);
-  overflow: hidden;
-}
-
-.shuffle-marquee-inner {
-  display: flex;
-  gap: 32px;
-  padding: 10px 0;
-  white-space: nowrap;
-  animation: shuffle-marquee 22s linear infinite;
-}
-
-.shuffle-marquee-item {
-  font-size: 2.1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.22em;
-  opacity: 0.09;
-  font-weight: 700;
-}
-
-@keyframes shuffle-marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-/* ========== PRODUCT SECTION ========== */
-
-.shuffle-products {
-  margin-top: 8px;
-}
-
-.shuffle-products-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 18px;
-}
-
-.shuffle-products-title {
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-}
-
-.shuffle-products-link {
-  font-size: 0.8rem;
-  opacity: 0.7;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  text-decoration: none;
-  color: #e5e7eb;
-}
-
-.shuffle-products-link:hover {
-  opacity: 1;
-}
-
-.shuffle-grid {
+/* Layout grid – ne adaptăm generic */
+.shuffle-theme .product-list,
+.shuffle-theme .product-grid,
+.shuffle-theme .catalog__products {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
   gap: 18px;
 }
 
-.shuffle-card {
+/* Card produs */
+.shuffle-theme .product-item,
+.shuffle-theme .product,
+.shuffle-theme .product-card,
+.shuffle-theme .catalog-item {
   background: radial-gradient(circle at top, #111827, #020617);
   border-radius: 20px;
-  border: 1px solid rgba(31, 41, 55, 0.9);
+  border: 1px solid rgba(31, 41, 55, 0.95);
   padding: 10px 10px 14px;
   display: flex;
   flex-direction: column;
@@ -370,27 +346,44 @@
   transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
 
-.shuffle-card:hover {
+.shuffle-theme .product-item:hover,
+.shuffle-theme .product:hover,
+.shuffle-theme .product-card:hover,
+.shuffle-theme .catalog-item:hover {
   transform: translateY(-4px);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
   border-color: rgba(139, 92, 246, 0.9);
 }
 
-.shuffle-card-media {
-  border-radius: 16px;
-  overflow: hidden;
-  background: #020617;
-  aspect-ratio: 3/4;
-  position: relative;
-}
-
-.shuffle-card-media img {
+/* Imagine produs */
+.shuffle-theme .product-item img,
+.shuffle-theme .product__image img,
+.shuffle-theme .product-card__image img,
+.shuffle-theme .catalog-item__image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 16px;
+  aspect-ratio: 3/4;
+  display: block;
 }
 
-.shuffle-card-tag {
+/* Container imagine, dacă există */
+.shuffle-theme .product__image,
+.shuffle-theme .product-card__image,
+.shuffle-theme .catalog-item__image,
+.shuffle-theme .product-photo {
+  border-radius: 16px;
+  overflow: hidden;
+  background: #020617;
+  position: relative;
+}
+
+/* Tag mic (ex: NEW, SALE) */
+.shuffle-theme .product-label,
+.shuffle-theme .product-badge,
+.shuffle-theme .product-tag,
+.shuffle-theme .catalog-item__label {
   position: absolute;
   left: 10px;
   top: 10px;
@@ -403,17 +396,31 @@
   color: #e5e7eb;
 }
 
-.shuffle-card-info {
+/* Info produs */
+.shuffle-theme .product__info,
+.shuffle-theme .product-info,
+.shuffle-theme .product-card__info,
+.shuffle-theme .catalog-item__info {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  margin-top: 6px;
 }
 
-.shuffle-card-name {
-  font-size: 0.85rem;
+/* Nume produs */
+.shuffle-theme .product__name,
+.shuffle-theme .product-title,
+.shuffle-theme .product-name,
+.shuffle-theme .catalog-item__title {
+  font-size: 0.9rem;
+  color: #f9fafb;
 }
 
-.shuffle-card-meta {
+/* Meta + preț */
+.shuffle-theme .product__bottom,
+.shuffle-theme .product-meta,
+.shuffle-theme .product-card__bottom,
+.shuffle-theme .catalog-item__bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -421,12 +428,20 @@
   opacity: 0.7;
 }
 
-.shuffle-card-price {
+/* Preț */
+.shuffle-theme .product__price,
+.shuffle-theme .price,
+.shuffle-theme .product-price,
+.shuffle-theme .catalog-item__price {
   font-weight: 600;
+  color: #fefce8;
   opacity: 1;
 }
 
-.shuffle-card-cta {
+/* „Add to cart” sau CTA mic jos */
+.shuffle-theme .product__cta,
+.shuffle-theme .product-card__cta,
+.shuffle-theme .catalog-item__cta {
   margin-top: 6px;
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -434,91 +449,95 @@
   opacity: 0.7;
 }
 
-/* ========== FOOTER ========== */
+/* =========================================
+   BUTOANE GLOBALE – UNIFORMIZARE
+========================================= */
 
-.shuffle-footer {
-  border-top: 1px solid rgba(31, 41, 55, 0.8);
+.shuffle-theme .btn,
+.shuffle-theme button,
+.shuffle-theme .button {
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.55);
+  background: transparent;
+  color: #e5e7eb;
+  padding: 9px 18px;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.shuffle-theme .btn:hover,
+.shuffle-theme button:hover,
+.shuffle-theme .button:hover {
+  background: rgba(15, 23, 42, 0.95);
+  border-color: rgba(148, 163, 184, 0.85);
+}
+
+/* Dacă Sellavi are .btn-primary separată, o suprascriem mai sus, deja. */
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.shuffle-theme footer,
+.shuffle-theme .site-footer,
+.shuffle-theme .footer {
+  border-top: 1px solid rgba(31, 41, 55, 0.85);
   margin-top: 40px;
   padding: 18px 16px 32px;
   font-size: 0.8rem;
-  opacity: 0.6;
+  color: #9ca3af;
+  background: #020617;
 }
 
-/* ========== RESPONSIVE ========== */
+.shuffle-theme .footer a {
+  color: #e5e7eb;
+  opacity: 0.8;
+}
+
+.shuffle-theme .footer a:hover {
+  opacity: 1;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
 
 @media (max-width: 960px) {
-  .shuffle-hero {
-    grid-template-columns: minmax(0, 1fr);
+  .shuffle-theme .page-wrapper,
+  .shuffle-theme .site-wrapper,
+  .shuffle-theme .content,
+  .shuffle-theme main {
+    padding-inline: 12px;
   }
 
-  .shuffle-hero-media {
-    min-height: 320px;
-  }
-
-  .shuffle-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .shuffle-theme nav,
+  .shuffle-theme .main-menu,
+  .shuffle-theme .menu {
+    gap: 12px;
+    font-size: 0.78rem;
   }
 }
 
 @media (max-width: 720px) {
-  .shuffle-header-inner {
+  .shuffle-theme nav,
+  .shuffle-theme .main-menu,
+  .shuffle-theme .menu {
+    display: none; /* pregătit pt. meniu mobil via JS dacă vrei ulterior */
+  }
+
+  .shuffle-theme .page-wrapper,
+  .shuffle-theme .site-wrapper,
+  .shuffle-theme .content,
+  .shuffle-theme main {
     padding-inline: 12px;
   }
 
-  .shuffle-nav {
-    display: none;
+  .shuffle-theme .product-list,
+  .shuffle-theme .product-grid,
+  .shuffle-theme .catalog__products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
-  .shuffle-burger {
-    display: inline-flex;
-  }
-
-  .shuffle-container {
-    padding-inline: 12px;
-  }
-
-  .shuffle-hero-card {
-    padding: 22px 18px 18px;
-  }
-
-  .shuffle-hero-title {
-    font-size: 2rem;
-  }
-
-  .shuffle-marquee-item {
-    font-size: 1.6rem;
-  }
-
-  .shuffle-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-/* Mobil: nav dropdown */
-.shuffle-nav-mobile {
-  display: none;
-  border-top: 1px solid rgba(31, 41, 55, 0.9);
-  background: #020617;
-}
-
-.shuffle-nav-mobile-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 10px 16px 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.shuffle-nav-mobile a {
-  font-size: 0.86rem;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  opacity: 0.7;
-  text-decoration: none;
-  color: #e5e7eb;
-}
-
-.shuffle-nav-mobile.show {
-  display: block;
 }
