@@ -1,360 +1,170 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Cormorant:wght@600&display=swap');
+/* ===========================
+   DD HEADER + NAV (Figma-like)
+   Targets: header-wrapper + navigation-wrapper
+=========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap');
 
 body.dd-theme{
   --dd-text:#1D1D1D;
-  --dd-muted:#646366;
+  --dd-muted:#7E7E7E;
   --dd-line:#EEEEEE;
   --dd-soft:#F5F5F5;
-  --dd-soft2:#F0F0F0;
-  --dd-btn:#606060;
+  --dd-softLine:#F0F0F0;
   --dd-max:1291px;
 }
 
-/* =========================
-   HEADER + NAV (united)
-========================= */
+/* make both areas look like ONE white block */
 body.dd-theme header.header,
-body.dd-theme .header{
-  background:#fff;
-}
-
 body.dd-theme .header-wrapper,
 body.dd-theme .navigation-wrapper{
   background:#fff !important;
 }
 
+/* remove random theme padding/blue bar feeling */
 body.dd-theme .header-wrapper{
+  padding:0 !important;
+  margin:0 !important;
+  border:0 !important;
+  box-shadow:none !important;
+}
+
+/* TOP ROW (search | logo | icons) */
+body.dd-theme .header-wrapper .container-fluid{
+  max-width:var(--dd-max);
+  margin:0 auto !important;
+  padding:0 24px !important;
+  height:78px !important;
+
+  display:grid !important;
+  grid-template-columns: 261px 1fr 261px;
+  align-items:center;
+  position:relative;
+
   border-bottom:1px solid var(--dd-line);
 }
 
-/* container widths */
-body.dd-theme .header-wrapper .container-fluid,
-body.dd-theme .navigation-wrapper .container{
-  max-width:var(--dd-max);
-  margin:0 auto;
-}
-
-/* top bar alignment (logo + widgets) */
-body.dd-theme .header-wrapper .container-fluid{
+/* center logo */
+body.dd-theme .header-wrapper .container-fluid .logo{
+  justify-self:center;
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  min-height:78px;
-  padding:0 24px;
 }
-
-/* logo */
-body.dd-theme .logo img,
-body.dd-theme .logo svg{
+body.dd-theme .header-wrapper .container-fluid .logo img{
   max-height:66px;
+  width:auto;
 }
 
-/* right side widgets (auth/register/cart) */
-body.dd-theme .header_widgets,
-body.dd-theme .header-widgets,
-body.dd-theme .header-widgets-wrapper{
-  display:flex;
+/* RIGHT SIDE icons / widgets */
+body.dd-theme .header-wrapper .container-fluid .header_widgets,
+body.dd-theme .header-wrapper .container-fluid .header-widgets,
+body.dd-theme .header-wrapper .container-fluid .header_widgets_wrapper,
+body.dd-theme .header-wrapper .container-fluid .header-widgets-wrapper{
+  justify-self:end;
+  display:flex !important;
   align-items:center;
   gap:16px;
 }
 
-/* auth/register links */
-body.dd-theme .header_widgets a,
-body.dd-theme .header-widgets a{
+/* If auth/register exists as text links, keep it tidy */
+body.dd-theme .header-wrapper a{
   font-family:'Jost', system-ui, -apple-system, "Segoe UI", sans-serif;
   font-size:14px;
   line-height:20px;
   color:var(--dd-text) !important;
   text-decoration:none !important;
-  opacity:.9;
-}
-body.dd-theme .header_widgets a:hover,
-body.dd-theme .header-widgets a:hover{
-  opacity:1;
 }
 
-/* cart button look (make it cleaner, less “buttony”) */
-body.dd-theme a.header-cart,
-body.dd-theme .cart-btn,
-body.dd-theme .header-cart{
-  font-family:'Jost', system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size:14px;
-  line-height:20px;
-  color:var(--dd-text) !important;
-  background:transparent !important;
-  border:1px solid #F0F0F0 !important;
-  padding:10px 14px !important;
-  border-radius:0 !important;
-}
-
-/* remove weird gaps between header and nav */
+/* NAV ROW (menu under, same width, same white) */
 body.dd-theme .navigation-wrapper{
-  padding:0 !important;
   margin:0 !important;
-  border-bottom:1px solid var(--dd-line);
+  padding:0 !important;
 }
 
-/* main menu */
+/* width align with top row */
+body.dd-theme .navigation-wrapper .container,
+body.dd-theme .navigation-wrapper .container-fluid{
+  max-width:var(--dd-max);
+  margin:0 auto !important;
+  padding:0 24px !important;
+}
+
+/* menu style */
 body.dd-theme ul.nav.sf-menu{
-  display:flex;
-  justify-content:center;
+  display:flex !important;
   align-items:center;
-  gap:28px;
-  padding:14px 0 !important;
+  justify-content:center;
+  gap:40px;
+  height:60px;          /* Figma: 60px */
   margin:0 !important;
+  padding:0 !important;
 }
 
 body.dd-theme ul.nav.sf-menu > li > a{
-  font-family:'Jost', system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight:400;
-  font-size:14px;
-  line-height:20px;
-  text-transform:uppercase;
-  color:var(--dd-text) !important;
-  letter-spacing:.02em;
-  padding:8px 6px !important;
-}
-
-body.dd-theme ul.nav.sf-menu > li > a:hover{
-  opacity:.75;
-}
-
-/* =========================
-   BANNER (banners_module)
-========================= */
-body.dd-theme section.banners_module.banner_type_8{
-  margin:0 !important;
-}
-
-body.dd-theme section.banners_module.banner_type_8 .owl-item .item{
-  position:relative;
-  min-height:800px;
-}
-
-body.dd-theme section.banners_module.banner_type_8 picture.img-bg,
-body.dd-theme section.banners_module.banner_type_8 .img-bg{
-  height:800px !important;
-}
-
-body.dd-theme section.banners_module.banner_type_8 picture.img-bg img,
-body.dd-theme section.banners_module.banner_type_8 .img-bg img{
-  width:100%;
-  height:800px !important;
-  object-fit:cover;
-}
-
-/* caption box = text + button */
-body.dd-theme section.banners_module.banner_type_8 .caption{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%, -50%) translateX(-436px);
-  width:416px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:26px;
-  text-align:center;
-  z-index:2;
-}
-
-body.dd-theme section.banners_module.banner_type_8 .caption h1,
-body.dd-theme section.banners_module.banner_type_8 .caption h2,
-body.dd-theme section.banners_module.banner_type_8 .caption .title{
-  font-family:'Jost', system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight:400;
-  font-size:52px;
-  line-height:54px;
-  color:#fff !important;
-  margin:0 !important;
-}
-
-/* banner button */
-body.dd-theme section.banners_module.banner_type_8 .caption a,
-body.dd-theme section.banners_module.banner_type_8 .caption .btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px 44px !important;
-  border:1px solid #fff !important;
-  background:transparent !important;
-  color:#fff !important;
-  font-family:'Jost', system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight:400;
-  font-size:18px;
-  text-transform:uppercase;
-  border-radius:0 !important;
-}
-
-/* keep banner usable on smaller screens */
-@media (max-width: 1400px){
-  body.dd-theme section.banners_module.banner_type_8 .caption{
-    transform:translate(-50%, -50%);
-    width:min(416px, 90vw);
-  }
-}
-@media (max-width: 768px){
-  body.dd-theme section.banners_module.banner_type_8 .owl-item .item,
-  body.dd-theme section.banners_module.banner_type_8 picture.img-bg,
-  body.dd-theme section.banners_module.banner_type_8 .img-bg,
-  body.dd-theme section.banners_module.banner_type_8 picture.img-bg img,
-  body.dd-theme section.banners_module.banner_type_8 .img-bg img{
-    height:520px !important;
-    min-height:520px !important;
-  }
-  body.dd-theme section.banners_module.banner_type_8 .caption h1,
-  body.dd-theme section.banners_module.banner_type_8 .caption h2{
-    font-size:34px;
-    line-height:38px;
-  }
-}
-
-/* =========================
-   CATEGORIES (homefeatured)
-========================= */
-body.dd-theme section.homefeatured_category{
-  background:#fff;
-  padding:50px 30px 100px;
-}
-
-/* give cards a clean “image + label” look (generic) */
-body.dd-theme section.homefeatured_category a{
-  text-decoration:none !important;
-}
-
-body.dd-theme section.homefeatured_category img{
-  width:100%;
-  height:auto;
-  display:block;
-}
-
-/* =========================
-   PRODUCTS (latest-section)
-========================= */
-body.dd-theme section.latest-section{
-  background:#fff;
-  padding:50px 30px;
-}
-
-body.dd-theme section.latest-section .section-title{
-  font-family:'Cormorant', serif;
-  font-weight:600;
-  font-size:42px;
-  line-height:51px;
-  text-transform:uppercase;
-  color:#312E2E;
-  letter-spacing:-1px;
-  margin:0 0 40px !important;
-  text-align:center;
-}
-
-/* product card */
-body.dd-theme .product-item.product-layout{
-  padding:0 !important;
-}
-
-body.dd-theme .product-item.product-layout .product-thumb,
-body.dd-theme .product-item.product-layout .thumb{
-  border:1px solid #F0F0F0;
-  background:#fff;
-}
-
-/* image block to “square” */
-body.dd-theme .product-item.product-layout .image{
-  position:relative;
-  aspect-ratio:1/1;
-  overflow:hidden;
-}
-body.dd-theme .product-item.product-layout .image img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-/* name + price */
-body.dd-theme .product-item.product-layout .caption,
-body.dd-theme .product-item.product-layout .product-details{
-  text-align:center;
-  padding:12px 10px 14px !important;
-}
-
-body.dd-theme .product-item.product-layout .name,
-body.dd-theme .product-item.product-layout .caption a{
-  font-family:'Jost', system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight:400;
-  font-size:14px;
-  line-height:20px;
-  color:var(--dd-muted) !important;
-}
-
-body.dd-theme .product-item.product-layout .price{
-  font-family:'Jost', system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight:600;
-  font-size:14px;
-  line-height:24px;
-  color:#2B2B2E !important;
-}
-
-/* CTA button -> outlined, 38px height, uppercase */
-body.dd-theme .product-item.product-layout .button-group .btn,
-body.dd-theme .product-item.product-layout .btn-cart,
-body.dd-theme .product-item.product-layout a.btn,
-body.dd-theme .product-item.product-layout button{
-  width:100% !important;
-  height:38px !important;
-  padding:5px 24px !important;
-  border:1px solid var(--dd-btn) !important;
-  background:transparent !important;
-  color:var(--dd-text) !important;
-  font-family:'Jost', system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-family:'Jost', system-ui, -apple-system, "Segoe UI", sans-serif !important;
   font-weight:400 !important;
   font-size:14px !important;
+  line-height:20px !important;
   text-transform:uppercase;
-  border-radius:0 !important;
+  letter-spacing:.02em;
+  color:var(--dd-text) !important;
+  padding:8px 0 !important;
 }
 
-/* =========================
-   FOOTER
-========================= */
-body.dd-theme footer.footer{
-  background:var(--dd-soft2) !important;
-  border-top:1px solid #E9E9E9;
+/* ===========================
+   SEARCH (left)
+   - If you already have a search input, this will style it.
+   - If you don't, we add it with JS (below).
+=========================== */
+
+body.dd-theme .header-wrapper .search,
+body.dd-theme .header-wrapper form.search,
+body.dd-theme .header-wrapper .search-form,
+body.dd-theme .header-wrapper #search,
+body.dd-theme .header-wrapper [class*="search"]{
+  justify-self:start;
 }
 
-body.dd-theme footer.footer .footer-widgets,
-body.dd-theme footer.footer .container{
-  max-width:var(--dd-max);
-  margin:0 auto;
+body.dd-theme .header-wrapper form.dd-search,
+body.dd-theme .header-wrapper form.search,
+body.dd-theme .header-wrapper .search-form{
+  width:261px;
+  height:44px;
+  display:flex;
+  align-items:center;
+  padding:0 12px;
+  gap:10px;
+  background:var(--dd-soft);
+  border:1px solid var(--dd-softLine);
 }
 
-body.dd-theme footer.footer{
-  padding:100px 24px 0;
-}
-
-body.dd-theme footer.footer h4,
-body.dd-theme footer.footer .footer-title{
+body.dd-theme .header-wrapper input[type="search"],
+body.dd-theme .header-wrapper input[name="search"]{
+  flex:1;
+  border:0 !important;
+  outline:none !important;
+  background:transparent !important;
   font-family:'Jost', system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight:500;
-  font-size:16px;
-  line-height:23px;
-  text-transform:uppercase;
-  color:var(--dd-text);
-  margin:0 0 26px;
-  letter-spacing:-0.01em;
-}
-
-body.dd-theme footer.footer a,
-body.dd-theme footer.footer p,
-body.dd-theme footer.footer li{
-  font-family:'Jost', system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight:400;
   font-size:14px;
-  line-height:26px;
-  color:#5D5D5D !important;
-  text-decoration:none !important;
+  line-height:20px;
+  color:var(--dd-muted);
 }
 
-body.dd-theme footer.footer a:hover{
-  opacity:.8;
+body.dd-theme .header-wrapper button[type="submit"],
+body.dd-theme .header-wrapper .search button{
+  border:0 !important;
+  background:transparent !important;
+  cursor:pointer;
+  font-size:16px;
+}
+
+/* mobile: hide search like in a lot of themes */
+@media (max-width: 768px){
+  body.dd-theme .header-wrapper form.dd-search,
+  body.dd-theme .header-wrapper form.search,
+  body.dd-theme .header-wrapper .search-form{ display:none !important; }
+
+  body.dd-theme .header-wrapper .container-fluid{
+    grid-template-columns: 1fr auto 1fr; /* keep logo center */
+  }
 }
