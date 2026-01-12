@@ -1,7 +1,9 @@
-/* Hide default login/register */
-.header_widgets .header_login{ display:none !important; }
+/* Ascundem login-ul default DOAR după ce JS a montat iconițele */
+.sv-icons-ready .header_widgets .header_login{
+  display: none !important;
+}
 
-/* Icons row */
+/* Bară iconițe (Cont + Wishlist) */
 .sv-hdr-icons{
   display:inline-flex;
   align-items:center;
@@ -20,20 +22,32 @@
 }
 .sv-ico-link:hover{
   transform:translateY(-1px);
-  background:rgba(0,0,0,.05);
+  background:rgba(0,0,0,.06);
 }
-.sv-ico-link img{ width:20px;height:20px;display:block; }
+.sv-ico-link img{
+  width:20px;height:20px;
+  display:block;
+}
 
-/* Cart restyle visual only */
-.header_widgets .header-cart.sticky .dropdown_cart_drop_down{
+/* Coș – îl schimbăm doar dacă JS a marcat elementul ca "ready" */
+.sv-cart-ready{
   display:inline-flex !important;
   align-items:center !important;
   gap:10px !important;
   padding:10px 14px !important;
   border-radius:8px !important;
 }
-.sv-cart-ico{ width:18px;height:18px;display:block; }
-.sv-cart-label{ font-weight:600; line-height:1; }
 
-/* hide old cart inner */
-.dropdown_cart_drop_down .sv-cart-old{ display:none !important; }
+.sv-cart-ico{
+  width:18px;height:18px;
+  display:block;
+}
+
+.sv-cart-label{
+  font-weight:600;
+  line-height:1;
+}
+
+.sv-cart-old{
+  display:none !important;
+}
