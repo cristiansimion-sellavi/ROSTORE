@@ -1,43 +1,33 @@
-/* Ascundem login-ul default DOAR după ce JS confirmă că a montat iconițele */
+/* ascundem login-ul default doar după ce JS a montat iconițele */
 .sv-icons-ready .header_widgets .header_login{
-  display: none !important;
+  display:none !important;
 }
 
-/* container iconițe */
+/* icon bar */
 .sv-hdr-icons{
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  margin-right: 14px;
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  margin-right:14px;
+  vertical-align:middle;
 }
 
-/* link icon */
 .sv-ico-link{
-  width: 34px;
-  height: 34px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  text-decoration: none;
-  transition: transform .12s ease, background-color .12s ease;
+  width:34px;height:34px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:10px;
+  text-decoration:none;
 }
-.sv-ico-link:hover{
-  transform: translateY(-1px);
-  background: rgba(0,0,0,.06);
-}
-.sv-ico-link img{
-  width: 20px;
-  height: 20px;
-  display: block;
-}
+.sv-ico-link img{ width:20px;height:20px;display:block; }
 
-/* Coș restyle (doar dacă JS a marcat elementul) */
+/* cart restyle */
 .sv-cart-ready{
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 10px !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:10px !important;
 }
-.sv-cart-ico{ width: 18px; height: 18px; display:block; }
-.sv-cart-label{ font-weight: 600; line-height: 1; }
+.sv-cart-ico{ width:18px;height:18px;display:block; }
+.sv-cart-label{ font-weight:600; line-height:1; }
 .sv-cart-old{ display:none !important; }
