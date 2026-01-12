@@ -1,170 +1,65 @@
-/* ===========================
-   DD HEADER + NAV (Figma-like)
-   Targets: header-wrapper + navigation-wrapper
-=========================== */
-
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap');
-
-body.dd-theme{
-  --dd-text:#1D1D1D;
-  --dd-muted:#7E7E7E;
-  --dd-line:#EEEEEE;
-  --dd-soft:#F5F5F5;
-  --dd-softLine:#F0F0F0;
-  --dd-max:1291px;
+/* ====== HEADER ICONS (Account / Wishlist / Cart) ====== */
+.sv-header-icons{
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
 }
 
-/* make both areas look like ONE white block */
-body.dd-theme header.header,
-body.dd-theme .header-wrapper,
-body.dd-theme .navigation-wrapper{
-  background:#fff !important;
+.sv-icon-link{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: transform .12s ease, background-color .12s ease;
 }
 
-/* remove random theme padding/blue bar feeling */
-body.dd-theme .header-wrapper{
-  padding:0 !important;
-  margin:0 !important;
-  border:0 !important;
-  box-shadow:none !important;
+.sv-icon-link:hover{
+  transform: translateY(-1px);
+  background: rgba(0,0,0,.04);
 }
 
-/* TOP ROW (search | logo | icons) */
-body.dd-theme .header-wrapper .container-fluid{
-  max-width:var(--dd-max);
-  margin:0 auto !important;
-  padding:0 24px !important;
-  height:78px !important;
-
-  display:grid !important;
-  grid-template-columns: 261px 1fr 261px;
-  align-items:center;
-  position:relative;
-
-  border-bottom:1px solid var(--dd-line);
+.sv-icon-link img{
+  width: 20px;
+  height: 20px;
+  display: block;
 }
 
-/* center logo */
-body.dd-theme .header-wrapper .container-fluid .logo{
-  justify-self:center;
-  display:flex;
-  align-items:center;
-}
-body.dd-theme .header-wrapper .container-fluid .logo img{
-  max-height:66px;
-  width:auto;
-}
-
-/* RIGHT SIDE icons / widgets */
-body.dd-theme .header-wrapper .container-fluid .header_widgets,
-body.dd-theme .header-wrapper .container-fluid .header-widgets,
-body.dd-theme .header-wrapper .container-fluid .header_widgets_wrapper,
-body.dd-theme .header-wrapper .container-fluid .header-widgets-wrapper{
-  justify-self:end;
-  display:flex !important;
-  align-items:center;
-  gap:16px;
+/* Cart button restyle (visual only) */
+.sv-cart-btn{
+  display: inline-flex !important;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px !important;
+  border-radius: 8px !important;
+  text-decoration: none !important;
+  line-height: 1 !important;
 }
 
-/* If auth/register exists as text links, keep it tidy */
-body.dd-theme .header-wrapper a{
-  font-family:'Jost', system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size:14px;
-  line-height:20px;
-  color:var(--dd-text) !important;
-  text-decoration:none !important;
+/* cart icon inside */
+.sv-cart-btn .sv-cart-ico{
+  width: 18px;
+  height: 18px;
+  display: block;
 }
 
-/* NAV ROW (menu under, same width, same white) */
-body.dd-theme .navigation-wrapper{
-  margin:0 !important;
-  padding:0 !important;
+/* keep badge readable if exists */
+.sv-cart-btn .badge,
+.sv-cart-btn .count,
+.sv-cart-btn [class*="badge"],
+.sv-cart-btn [class*="count"]{
+  margin-left: 6px;
 }
 
-/* width align with top row */
-body.dd-theme .navigation-wrapper .container,
-body.dd-theme .navigation-wrapper .container-fluid{
-  max-width:var(--dd-max);
-  margin:0 auto !important;
-  padding:0 24px !important;
+/* Hide old auth/register text if we detect it */
+.sv-hide-old-auth{
+  display: none !important;
 }
 
-/* menu style */
-body.dd-theme ul.nav.sf-menu{
-  display:flex !important;
-  align-items:center;
-  justify-content:center;
-  gap:40px;
-  height:60px;          /* Figma: 60px */
-  margin:0 !important;
-  padding:0 !important;
-}
-
-body.dd-theme ul.nav.sf-menu > li > a{
-  font-family:'Jost', system-ui, -apple-system, "Segoe UI", sans-serif !important;
-  font-weight:400 !important;
-  font-size:14px !important;
-  line-height:20px !important;
-  text-transform:uppercase;
-  letter-spacing:.02em;
-  color:var(--dd-text) !important;
-  padding:8px 0 !important;
-}
-
-/* ===========================
-   SEARCH (left)
-   - If you already have a search input, this will style it.
-   - If you don't, we add it with JS (below).
-=========================== */
-
-body.dd-theme .header-wrapper .search,
-body.dd-theme .header-wrapper form.search,
-body.dd-theme .header-wrapper .search-form,
-body.dd-theme .header-wrapper #search,
-body.dd-theme .header-wrapper [class*="search"]{
-  justify-self:start;
-}
-
-body.dd-theme .header-wrapper form.dd-search,
-body.dd-theme .header-wrapper form.search,
-body.dd-theme .header-wrapper .search-form{
-  width:261px;
-  height:44px;
-  display:flex;
-  align-items:center;
-  padding:0 12px;
-  gap:10px;
-  background:var(--dd-soft);
-  border:1px solid var(--dd-softLine);
-}
-
-body.dd-theme .header-wrapper input[type="search"],
-body.dd-theme .header-wrapper input[name="search"]{
-  flex:1;
-  border:0 !important;
-  outline:none !important;
-  background:transparent !important;
-  font-family:'Jost', system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size:14px;
-  line-height:20px;
-  color:var(--dd-muted);
-}
-
-body.dd-theme .header-wrapper button[type="submit"],
-body.dd-theme .header-wrapper .search button{
-  border:0 !important;
-  background:transparent !important;
-  cursor:pointer;
-  font-size:16px;
-}
-
-/* mobile: hide search like in a lot of themes */
+/* Small screens spacing */
 @media (max-width: 768px){
-  body.dd-theme .header-wrapper form.dd-search,
-  body.dd-theme .header-wrapper form.search,
-  body.dd-theme .header-wrapper .search-form{ display:none !important; }
-
-  body.dd-theme .header-wrapper .container-fluid{
-    grid-template-columns: 1fr auto 1fr; /* keep logo center */
-  }
+  .sv-header-icons{ gap: 14px; }
+  .sv-icon-link{ width: 32px; height: 32px; }
 }
