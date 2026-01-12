@@ -1,70 +1,39 @@
-/* ===== Header Icons Row (Account / Wishlist / Cart) ===== */
-.header_widgets{
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 14px;
-}
+/* Hide default login/register */
+.header_widgets .header_login{ display:none !important; }
 
-/* Hide default login/register links */
-.header_widgets .header_login{
-  display: none !important;
-}
-
-/* Our icons container */
+/* Icons row */
 .sv-hdr-icons{
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  margin-right:14px;
 }
 
-/* Icon links (account + wishlist) */
 .sv-ico-link{
-  width: 34px;
-  height: 34px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  text-decoration: none;
-  transition: transform .12s ease, background-color .12s ease;
+  width:34px;height:34px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:10px;
+  text-decoration:none;
+  transition:transform .12s ease, background-color .12s ease;
 }
-
 .sv-ico-link:hover{
-  transform: translateY(-1px);
-  background: rgba(0,0,0,.05);
+  transform:translateY(-1px);
+  background:rgba(0,0,0,.05);
 }
+.sv-ico-link img{ width:20px;height:20px;display:block; }
 
-.sv-ico-link img{
-  width: 20px;
-  height: 20px;
-  display: block;
-}
-
-/* Cart visual restyle (keep functionality) */
+/* Cart restyle visual only */
 .header_widgets .header-cart.sticky .dropdown_cart_drop_down{
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 10px !important;
-  padding: 10px 14px !important;
-  border-radius: 8px !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:10px !important;
+  padding:10px 14px !important;
+  border-radius:8px !important;
 }
+.sv-cart-ico{ width:18px;height:18px;display:block; }
+.sv-cart-label{ font-weight:600; line-height:1; }
 
-/* Our injected cart icon */
-.sv-cart-ico{
-  width: 18px;
-  height: 18px;
-  display: block;
-}
-
-/* Our label */
-.sv-cart-label{
-  display: inline-block;
-  line-height: 1;
-  font-weight: 600;
-}
-
-/* Hide old cart inner visuals if any (svg/icon/text inside) */
-.dropdown_cart_drop_down .sv-cart-old{
-  display: none !important;
-}
+/* hide old cart inner */
+.dropdown_cart_drop_down .sv-cart-old{ display:none !important; }
