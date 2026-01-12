@@ -1,350 +1,360 @@
-/* =========================================
-   ADMINSELLAVI THEME - SAFE VERSION
-   Doar skin (culori, font, umbre). Fără layout/grid.
-========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Cormorant:wght@600&display=swap');
 
-/* ===== BODY & GLOBAL ===== */
-
-body.dd-theme {
-  margin: 0;
-  padding: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-    "Segoe UI", sans-serif;
-  color: #0f172a;
-  background: radial-gradient(circle at top left, #f4f6ff 0, #edf2ff 25%, #f9fafb 60%, #e2e8f0 100%);
-  -webkit-font-smoothing: antialiased;
+body.dd-theme{
+  --dd-text:#1D1D1D;
+  --dd-muted:#646366;
+  --dd-line:#EEEEEE;
+  --dd-soft:#F5F5F5;
+  --dd-soft2:#F0F0F0;
+  --dd-btn:#606060;
+  --dd-max:1291px;
 }
 
-body.dd-theme a {
-  color: inherit;
-  text-decoration: none;
+/* =========================
+   HEADER + NAV (united)
+========================= */
+body.dd-theme header.header,
+body.dd-theme .header{
+  background:#fff;
 }
 
-body.dd-theme a:hover {
-  text-decoration: none;
+body.dd-theme .header-wrapper,
+body.dd-theme .navigation-wrapper{
+  background:#fff !important;
 }
 
-/* Scrollbar mai finuț */
-body.dd-theme::-webkit-scrollbar {
-  width: 8px;
-}
-body.dd-theme::-webkit-scrollbar-track {
-  background: transparent;
-}
-body.dd-theme::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #4f46e5, #22d3ee);
-  border-radius: 999px;
+body.dd-theme .header-wrapper{
+  border-bottom:1px solid var(--dd-line);
 }
 
-/* Titluri & texte */
-
-body.dd-theme h1,
-body.dd-theme .page-title {
-  font-size: clamp(2.2rem, 4vw, 3rem);
-  line-height: 1.05;
-  letter-spacing: 0.02em;
-  font-weight: 800;
-  color: #020617;
+/* container widths */
+body.dd-theme .header-wrapper .container-fluid,
+body.dd-theme .navigation-wrapper .container{
+  max-width:var(--dd-max);
+  margin:0 auto;
 }
 
-body.dd-theme h2 {
-  font-size: clamp(1.6rem, 3vw, 2.1rem);
-  font-weight: 700;
-  color: #020617;
+/* top bar alignment (logo + widgets) */
+body.dd-theme .header-wrapper .container-fluid{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  min-height:78px;
+  padding:0 24px;
 }
 
-body.dd-theme h3,
-body.dd-theme h4 {
-  font-weight: 600;
-  color: #020617;
-}
-
-body.dd-theme p {
-  line-height: 1.6;
-  color: #334155;
-}
-
-/* Containere */
-body.dd-theme .page-wrapper,
-body.dd-theme .site-wrapper,
-body.dd-theme .content,
-body.dd-theme main,
-body.dd-theme .container,
-body.dd-theme .wrapper {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding-inline: 20px;
-}
-
-/* =========================================
-   HEADER - stil gen Hongo: simplu, curat
-========================================= */
-
-body.dd-theme header,
-body.dd-theme .site-header,
-body.dd-theme .header {
-  background: #ffffff;
-  border-bottom: 1px solid #e2e8f0;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
-}
-
-/* Liniile din header nu modifică layout-ul, doar spacing & culori */
-body.dd-theme header a,
-body.dd-theme .header a {
-  color: #111827;
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-body.dd-theme header a:hover,
-body.dd-theme .header a:hover {
-  color: #4f46e5;
-}
-
-/* Bara principală (logo + meniu + coș) */
-body.dd-theme .top-panel,
-body.dd-theme .header-middle,
-body.dd-theme .header-main {
-  padding: 10px 20px;
-}
-
-/* Logo existent – doar mărime & spațiere */
-body.dd-theme .logo,
-body.dd-theme .site-logo,
-body.dd-theme .header-logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
+/* logo */
 body.dd-theme .logo img,
-body.dd-theme .site-logo img,
-body.dd-theme .header-logo img {
-  max-height: 30px;
-  width: auto;
+body.dd-theme .logo svg{
+  max-height:66px;
 }
 
-/* Meniu principal: doar spacing între iteme */
-body.dd-theme nav ul,
-body.dd-theme .main-menu,
-body.dd-theme .menu {
-  list-style: none;
+/* right side widgets (auth/register/cart) */
+body.dd-theme .header_widgets,
+body.dd-theme .header-widgets,
+body.dd-theme .header-widgets-wrapper{
+  display:flex;
+  align-items:center;
+  gap:16px;
 }
 
-body.dd-theme nav ul li,
-body.dd-theme .main-menu li,
-body.dd-theme .menu li {
-  display: inline-block;
-  margin: 0 10px;
+/* auth/register links */
+body.dd-theme .header_widgets a,
+body.dd-theme .header-widgets a{
+  font-family:'Jost', system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size:14px;
+  line-height:20px;
+  color:var(--dd-text) !important;
+  text-decoration:none !important;
+  opacity:.9;
+}
+body.dd-theme .header_widgets a:hover,
+body.dd-theme .header-widgets a:hover{
+  opacity:1;
 }
 
-/* Top links (Despre noi, Contact, limbă) */
-body.dd-theme .top-panel a,
-body.dd-theme .top-links a {
-  font-size: 0.8rem;
-  color: #64748b;
+/* cart button look (make it cleaner, less “buttony”) */
+body.dd-theme a.header-cart,
+body.dd-theme .cart-btn,
+body.dd-theme .header-cart{
+  font-family:'Jost', system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size:14px;
+  line-height:20px;
+  color:var(--dd-text) !important;
+  background:transparent !important;
+  border:1px solid #F0F0F0 !important;
+  padding:10px 14px !important;
+  border-radius:0 !important;
 }
 
-body.dd-theme .top-panel a:hover,
-body.dd-theme .top-links a:hover {
-  color: #4f46e5;
+/* remove weird gaps between header and nav */
+body.dd-theme .navigation-wrapper{
+  padding:0 !important;
+  margin:0 !important;
+  border-bottom:1px solid var(--dd-line);
 }
 
-/* Buton coș + autentificare – badge mai curat */
-
-body.dd-theme [href*="cart"],
-body.dd-theme [href*="Cos"],
-body.dd-theme .cart-link,
-body.dd-theme .cart-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 12px;
-  border-radius: 999px;
-  background: #22c55e;
-  color: #f9fafb !important;
-  font-size: 0.86rem;
-  font-weight: 600;
-  box-shadow: 0 10px 25px rgba(34, 197, 94, 0.4);
+/* main menu */
+body.dd-theme ul.nav.sf-menu{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:28px;
+  padding:14px 0 !important;
+  margin:0 !important;
 }
 
-body.dd-theme [href*="cart"]:hover,
-body.dd-theme [href*="Cos"]:hover,
-body.dd-theme .cart-link:hover,
-body.dd-theme .cart-button:hover {
-  filter: brightness(1.05);
+body.dd-theme ul.nav.sf-menu > li > a{
+  font-family:'Jost', system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight:400;
+  font-size:14px;
+  line-height:20px;
+  text-transform:uppercase;
+  color:var(--dd-text) !important;
+  letter-spacing:.02em;
+  padding:8px 6px !important;
 }
 
-/* "Autentificare / Înregistrare" – text mai discret + icon vibe */
-body.dd-theme a[href*="login"],
-body.dd-theme a[href*="autentificare"],
-body.dd-theme a[href*="cont"] {
-  position: relative;
-  padding-left: 20px;
+body.dd-theme ul.nav.sf-menu > li > a:hover{
+  opacity:.75;
 }
 
-body.dd-theme a[href*="login"]::before,
-body.dd-theme a[href*="autentificare"]::before,
-body.dd-theme a[href*="cont"]::before {
-  content: "👤";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 0.9rem;
+/* =========================
+   BANNER (banners_module)
+========================= */
+body.dd-theme section.banners_module.banner_type_8{
+  margin:0 !important;
 }
 
-/* =========================================
-   CARDURI PRODUSE - doar skin, fără grid / display
-========================================= */
-
-/* Container general de produse (home & listă) */
-body.dd-theme .products,
-body.dd-theme .product-list,
-body.dd-theme .catalog-products,
-body.dd-theme .home-products {
-  margin-top: 20px;
+body.dd-theme section.banners_module.banner_type_8 .owl-item .item{
+  position:relative;
+  min-height:800px;
 }
 
-/* Card generic – ne legăm de clasele care conțin "product" dar nu schimbăm display/width */
-body.dd-theme .product,
-body.dd-theme .product-item,
-body.dd-theme .product_box,
-body.dd-theme .product-box,
-body.dd-theme [class*="product-card"],
-body.dd-theme .products .item {
-  background: #ffffff;
-  border-radius: 20px;
-  padding: 12px 12px 14px;
-  border: 1px solid rgba(203, 213, 225, 0.9);
-  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.16s ease-out, box-shadow 0.16s ease-out,
-    border-color 0.16s ease-out;
+body.dd-theme section.banners_module.banner_type_8 picture.img-bg,
+body.dd-theme section.banners_module.banner_type_8 .img-bg{
+  height:800px !important;
 }
 
-/* Hover – card se ridică puțin, fără 3D hardcore */
-body.dd-theme .product:hover,
-body.dd-theme .product-item:hover,
-body.dd-theme .product_box:hover,
-body.dd-theme .product-box:hover,
-body.dd-theme [class*="product-card"]:hover,
-body.dd-theme .products .item:hover {
-  transform: translateY(-4px);
-  border-color: rgba(129, 140, 248, 0.95);
-  box-shadow: 0 22px 45px rgba(15, 23, 42, 0.18);
+body.dd-theme section.banners_module.banner_type_8 picture.img-bg img,
+body.dd-theme section.banners_module.banner_type_8 .img-bg img{
+  width:100%;
+  height:800px !important;
+  object-fit:cover;
 }
 
-/* Imagini – doar colțuri rotunjite, fără aspect-ratio/hărțuială */
-body.dd-theme .product img,
-body.dd-theme .product-item img,
-body.dd-theme .product-box img,
-body.dd-theme .product_box img,
-body.dd-theme [class*="product-card"] img,
-body.dd-theme .products .item img {
-  border-radius: 16px;
+/* caption box = text + button */
+body.dd-theme section.banners_module.banner_type_8 .caption{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%) translateX(-436px);
+  width:416px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:26px;
+  text-align:center;
+  z-index:2;
 }
 
-/* Nume produs & preț – un pic de hierarchy */
-body.dd-theme .product h4,
-body.dd-theme .product-title,
-body.dd-theme .product-name,
-body.dd-theme .products .item h4 {
-  font-size: 0.95rem;
-  font-weight: 600;
-  margin-top: 8px;
-  margin-bottom: 4px;
-  color: #0f172a;
+body.dd-theme section.banners_module.banner_type_8 .caption h1,
+body.dd-theme section.banners_module.banner_type_8 .caption h2,
+body.dd-theme section.banners_module.banner_type_8 .caption .title{
+  font-family:'Jost', system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight:400;
+  font-size:52px;
+  line-height:54px;
+  color:#fff !important;
+  margin:0 !important;
 }
 
-body.dd-theme .price,
-body.dd-theme .product-price,
-body.dd-theme .products .item .price {
-  font-weight: 700;
-  color: #111827;
+/* banner button */
+body.dd-theme section.banners_module.banner_type_8 .caption a,
+body.dd-theme section.banners_module.banner_type_8 .caption .btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px 44px !important;
+  border:1px solid #fff !important;
+  background:transparent !important;
+  color:#fff !important;
+  font-family:'Jost', system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight:400;
+  font-size:18px;
+  text-transform:uppercase;
+  border-radius:0 !important;
 }
 
-/* Buton "Adăugați în coș" din card */
-body.dd-theme .products .item button,
-body.dd-theme .products .item input[type="submit"],
-body.dd-theme .product .button,
-body.dd-theme .product .btn {
-  border-radius: 999px;
-  border: none;
-  background: linear-gradient(135deg, #4f46e5, #22c55e);
-  color: #f9fafb;
-  padding: 8px 14px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 14px 30px rgba(79, 70, 229, 0.5);
+/* keep banner usable on smaller screens */
+@media (max-width: 1400px){
+  body.dd-theme section.banners_module.banner_type_8 .caption{
+    transform:translate(-50%, -50%);
+    width:min(416px, 90vw);
+  }
+}
+@media (max-width: 768px){
+  body.dd-theme section.banners_module.banner_type_8 .owl-item .item,
+  body.dd-theme section.banners_module.banner_type_8 picture.img-bg,
+  body.dd-theme section.banners_module.banner_type_8 .img-bg,
+  body.dd-theme section.banners_module.banner_type_8 picture.img-bg img,
+  body.dd-theme section.banners_module.banner_type_8 .img-bg img{
+    height:520px !important;
+    min-height:520px !important;
+  }
+  body.dd-theme section.banners_module.banner_type_8 .caption h1,
+  body.dd-theme section.banners_module.banner_type_8 .caption h2{
+    font-size:34px;
+    line-height:38px;
+  }
 }
 
-body.dd-theme .products .item button:hover,
-body.dd-theme .products .item input[type="submit"]:hover,
-body.dd-theme .product .button:hover,
-body.dd-theme .product .btn:hover {
-  filter: brightness(1.05);
+/* =========================
+   CATEGORIES (homefeatured)
+========================= */
+body.dd-theme section.homefeatured_category{
+  background:#fff;
+  padding:50px 30px 100px;
 }
 
-/* =========================================
+/* give cards a clean “image + label” look (generic) */
+body.dd-theme section.homefeatured_category a{
+  text-decoration:none !important;
+}
+
+body.dd-theme section.homefeatured_category img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+/* =========================
+   PRODUCTS (latest-section)
+========================= */
+body.dd-theme section.latest-section{
+  background:#fff;
+  padding:50px 30px;
+}
+
+body.dd-theme section.latest-section .section-title{
+  font-family:'Cormorant', serif;
+  font-weight:600;
+  font-size:42px;
+  line-height:51px;
+  text-transform:uppercase;
+  color:#312E2E;
+  letter-spacing:-1px;
+  margin:0 0 40px !important;
+  text-align:center;
+}
+
+/* product card */
+body.dd-theme .product-item.product-layout{
+  padding:0 !important;
+}
+
+body.dd-theme .product-item.product-layout .product-thumb,
+body.dd-theme .product-item.product-layout .thumb{
+  border:1px solid #F0F0F0;
+  background:#fff;
+}
+
+/* image block to “square” */
+body.dd-theme .product-item.product-layout .image{
+  position:relative;
+  aspect-ratio:1/1;
+  overflow:hidden;
+}
+body.dd-theme .product-item.product-layout .image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* name + price */
+body.dd-theme .product-item.product-layout .caption,
+body.dd-theme .product-item.product-layout .product-details{
+  text-align:center;
+  padding:12px 10px 14px !important;
+}
+
+body.dd-theme .product-item.product-layout .name,
+body.dd-theme .product-item.product-layout .caption a{
+  font-family:'Jost', system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight:400;
+  font-size:14px;
+  line-height:20px;
+  color:var(--dd-muted) !important;
+}
+
+body.dd-theme .product-item.product-layout .price{
+  font-family:'Jost', system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight:600;
+  font-size:14px;
+  line-height:24px;
+  color:#2B2B2E !important;
+}
+
+/* CTA button -> outlined, 38px height, uppercase */
+body.dd-theme .product-item.product-layout .button-group .btn,
+body.dd-theme .product-item.product-layout .btn-cart,
+body.dd-theme .product-item.product-layout a.btn,
+body.dd-theme .product-item.product-layout button{
+  width:100% !important;
+  height:38px !important;
+  padding:5px 24px !important;
+  border:1px solid var(--dd-btn) !important;
+  background:transparent !important;
+  color:var(--dd-text) !important;
+  font-family:'Jost', system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight:400 !important;
+  font-size:14px !important;
+  text-transform:uppercase;
+  border-radius:0 !important;
+}
+
+/* =========================
    FOOTER
-========================================= */
-
-body.dd-theme footer,
-body.dd-theme .site-footer,
-body.dd-theme .footer {
-  margin-top: 40px;
-  padding: 26px 20px 32px;
-  background: #020617;
-  color: #e5e7eb;
-  border-top: 1px solid rgba(51, 65, 85, 0.9);
+========================= */
+body.dd-theme footer.footer{
+  background:var(--dd-soft2) !important;
+  border-top:1px solid #E9E9E9;
 }
 
-body.dd-theme footer a {
-  color: #cbd5f5;
+body.dd-theme footer.footer .footer-widgets,
+body.dd-theme footer.footer .container{
+  max-width:var(--dd-max);
+  margin:0 auto;
 }
 
-body.dd-theme footer a:hover {
-  color: #e5edff;
+body.dd-theme footer.footer{
+  padding:100px 24px 0;
 }
 
-/* =========================================
-   FADE-IN (safe)
-========================================= */
-
-body.dd-theme .dd-fade {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.55s cubic-bezier(0.18, 0.89, 0.32, 1.2),
-    transform 0.55s cubic-bezier(0.18, 0.89, 0.32, 1.2);
+body.dd-theme footer.footer h4,
+body.dd-theme footer.footer .footer-title{
+  font-family:'Jost', system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight:500;
+  font-size:16px;
+  line-height:23px;
+  text-transform:uppercase;
+  color:var(--dd-text);
+  margin:0 0 26px;
+  letter-spacing:-0.01em;
 }
 
-body.dd-theme .dd-fade.dd-in-view {
-  opacity: 1;
-  transform: translateY(0);
+body.dd-theme footer.footer a,
+body.dd-theme footer.footer p,
+body.dd-theme footer.footer li{
+  font-family:'Jost', system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight:400;
+  font-size:14px;
+  line-height:26px;
+  color:#5D5D5D !important;
+  text-decoration:none !important;
 }
 
-/* =========================================
-   RESPONSIVE (doar spacing, nu umblăm la griduri)
-========================================= */
-
-@media (max-width: 960px) {
-  body.dd-theme .page-wrapper,
-  body.dd-theme .site-wrapper,
-  body.dd-theme .content,
-  body.dd-theme main,
-  body.dd-theme .container,
-  body.dd-theme .wrapper {
-    padding-inline: 14px;
-  }
-}
-
-@media (max-width: 720px) {
-  body.dd-theme header,
-  body.dd-theme .site-header,
-  body.dd-theme .header {
-    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.16);
-  }
+body.dd-theme footer.footer a:hover{
+  opacity:.8;
 }
