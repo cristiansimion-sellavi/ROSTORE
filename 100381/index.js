@@ -1,8 +1,6 @@
 (function () {
   "use strict";
 
-  console.log("✅ SV 100381 header script running");
-
   const ASSETS_BASE = (() => {
     const src = document.currentScript?.src || "";
     const base = src ? src.split("/").slice(0, -1).join("/") : "";
@@ -22,44 +20,40 @@
 
   function mount() {
     const widgets = qs(".header_widgets");
-    if (!widgets) return;
+    if (!widgets) return false;
 
-    // stop duplicates
-    if (qs(".sv-hdr-icons", widgets)) return;
+    // coșul (în structura ta e .header-cart.sticky -> .dropdown_cart_drop_down)
+    const cartWrap = qs(".header-cart.sticky", widgets) || qs(".header-cart", widgets);
+    const cartDrop = cartWrap ? qs(".dropdown_cart_drop_down", cartWrap) : null;
 
-    // hide default auth/register
-    const login = qs(".header_login", widgets);
-    if (login) login.style.display = "none";
+    if (!cartWrap || !cartDrop) return false;
 
-    // find cart dropdown
-    const cartDrop = qs(".header-cart.sticky .dropdown_cart_drop_down", widgets);
-    const cartWrap = qs(".header-cart.sticky", widgets);
-    if (!cartDrop || !cartWrap) return;
+    // dacă există deja bar-ul nostru, doar asigură-te că login-ul e ascuns
+    if (!qs(".sv-hdr-icons", widgets)) {
+      const bar = document.createElement("div");
+      bar.className = "sv-hdr-icons";
+      bar.innerHTML = `
+        <a class="sv-ico-link" href="${ACCOUNT_LINK}" aria-label="Cont">
+          <img src="${ICONS.account}" alt="">
+        </a>
+        <a class="sv-ico-link" href="${WISHLIST_LINK}" aria-label="Wishlist">
+          <img src="${ICONS.wishlist}" alt="">
+        </a>
+      `;
 
-    // build our icons
-    const wrap = document.createElement("div");
-    wrap.className = "sv-hdr-icons";
+      // pune iconițele înainte de coș
+      cartWrap.parentElement.insertBefore(bar, cartWrap);
+    }
 
-    wrap.innerHTML = `
-      <a class="sv-ico-link" href="${ACCOUNT_LINK}" aria-label="Cont">
-        <img src="${ICONS.account}" alt="">
-      </a>
-      <a class="sv-ico-link" href="${WISHLIST_LINK}" aria-label="Wishlist">
-        <img src="${ICONS.wishlist}" alt="">
-      </a>
-    `;
-
-    // insert before cart
-    cartWrap.parentElement.insertBefore(wrap, cartWrap);
-
-    // keep old cart content but hide
-    if (!qs(".sv-cart-old", cartDrop)) {
+    // Restyle cart: păstrează funcționalitatea, schimbă doar conținutul vizual
+    if (!cartDrop.classList.contains("sv-cart-ready")) {
+      // ascunde conținutul vechi, dar îl păstrează în DOM
       const old = document.createElement("span");
       old.className = "sv-cart-old";
       while (cartDrop.firstChild) old.appendChild(cartDrop.firstChild);
       cartDrop.appendChild(old);
 
-      // inject new cart visual
+      // inject new visual
       const img = document.createElement("img");
       img.className = "sv-cart-ico";
       img.src = ICONS.cart;
@@ -71,16 +65,27 @@
 
       cartDrop.insertBefore(label, cartDrop.firstChild);
       cartDrop.insertBefore(img, cartDrop.firstChild);
+
+      cartDrop.classList.add("sv-cart-ready");
     }
+
+    // ascundem login-ul default abia acum (după montare)
+    document.documentElement.classList.add("sv-icons-ready");
+
+    return true;
   }
 
   function init() {
-    mount();
+    // hard retry: headerul poate apărea după load
+    let tries = 0;
+    const timer = setInterval(() => {
+      tries++;
+      const ok = mount();
+      if (ok || tries >= 60) clearInterval(timer); // ~6 sec max
+    }, 100);
 
-    const mo = new MutationObserver(() => {
-      clearTimeout(window.__sv_t);
-      window.__sv_t = setTimeout(mount, 120);
-    });
+    // re-mount dacă tema re-randează headerul
+    const mo = new MutationObserver(() => mount());
     mo.observe(document.documentElement, { childList: true, subtree: true });
   }
 
