@@ -1,7 +1,8 @@
 (function () {
   "use strict";
 
-  // --- bullet-proof assets base: ia baza din URL-ul lui index.js ---
+  console.log("✅ SV 100381 header script running");
+
   const ASSETS_BASE = (() => {
     const src = document.currentScript?.src || "";
     const base = src ? src.split("/").slice(0, -1).join("/") : "";
@@ -14,80 +15,71 @@
     cart: `${ASSETS_BASE}/cart.png`,
   };
 
+  const ACCOUNT_LINK = "/account";
+  const WISHLIST_LINK = "/index.php?route=account/wishlist";
+
   function qs(sel, root = document) { return root.querySelector(sel); }
-  function qsa(sel, root = document) { return Array.from(root.querySelectorAll(sel)); }
 
-  function mountHeaderIcons() {
-    const headerWidgets = qs(".header_widgets");
-    if (!headerWidgets) return;
+  function mount() {
+    const widgets = qs(".header_widgets");
+    if (!widgets) return;
 
-    // prevent duplicate
-    if (qs(".sv-hdr-icons", headerWidgets)) return;
+    // stop duplicates
+    if (qs(".sv-hdr-icons", widgets)) return;
 
-    // 1) Hide default login/register (extra safety, chiar dacă e deja în CSS)
-    const loginBlock = qs(".header_login", headerWidgets);
-    if (loginBlock) loginBlock.style.display = "none";
+    // hide default auth/register
+    const login = qs(".header_login", widgets);
+    if (login) login.style.display = "none";
 
-    // 2) Find cart element
-    const cartDrop = qs(".header-cart.sticky .dropdown_cart_drop_down", headerWidgets);
-    if (!cartDrop) return;
+    // find cart dropdown
+    const cartDrop = qs(".header-cart.sticky .dropdown_cart_drop_down", widgets);
+    const cartWrap = qs(".header-cart.sticky", widgets);
+    if (!cartDrop || !cartWrap) return;
 
-    // 3) Build our icons container
+    // build our icons
     const wrap = document.createElement("div");
     wrap.className = "sv-hdr-icons";
 
-    const aAccount = document.createElement("a");
-    aAccount.className = "sv-ico-link sv-ico-account";
-    aAccount.href = "/account";
-    aAccount.setAttribute("aria-label", "Cont");
-    aAccount.innerHTML = `<img src="${ICONS.account}" alt="">`;
+    wrap.innerHTML = `
+      <a class="sv-ico-link" href="${ACCOUNT_LINK}" aria-label="Cont">
+        <img src="${ICONS.account}" alt="">
+      </a>
+      <a class="sv-ico-link" href="${WISHLIST_LINK}" aria-label="Wishlist">
+        <img src="${ICONS.wishlist}" alt="">
+      </a>
+    `;
 
-    const aWish = document.createElement("a");
-    aWish.className = "sv-ico-link sv-ico-wishlist";
-    aWish.href = "/index.php?route=account/wishlist";
-    aWish.setAttribute("aria-label", "Wishlist");
-    aWish.innerHTML = `<img src="${ICONS.wishlist}" alt="">`;
+    // insert before cart
+    cartWrap.parentElement.insertBefore(wrap, cartWrap);
 
-    wrap.appendChild(aAccount);
-    wrap.appendChild(aWish);
+    // keep old cart content but hide
+    if (!qs(".sv-cart-old", cartDrop)) {
+      const old = document.createElement("span");
+      old.className = "sv-cart-old";
+      while (cartDrop.firstChild) old.appendChild(cartDrop.firstChild);
+      cartDrop.appendChild(old);
 
-    // 4) Insert icons BEFORE cart block (so it becomes: account, wishlist, cart)
-    // cartDrop is inside headerWidgets; we insert our wrap right before header-cart container if possible
-    const cartContainer = qs(".header-cart.sticky", headerWidgets) || cartDrop.parentElement;
-    if (cartContainer && cartContainer.parentElement) {
-      cartContainer.parentElement.insertBefore(wrap, cartContainer);
-    } else {
-      headerWidgets.insertBefore(wrap, cartDrop);
+      // inject new cart visual
+      const img = document.createElement("img");
+      img.className = "sv-cart-ico";
+      img.src = ICONS.cart;
+      img.alt = "";
+
+      const label = document.createElement("span");
+      label.className = "sv-cart-label";
+      label.textContent = "Coș";
+
+      cartDrop.insertBefore(label, cartDrop.firstChild);
+      cartDrop.insertBefore(img, cartDrop.firstChild);
     }
-
-    // 5) Restyle cart visually WITHOUT breaking click handlers
-    // Keep existing cart content but hide it
-    const old = document.createElement("span");
-    old.className = "sv-cart-old";
-    while (cartDrop.firstChild) old.appendChild(cartDrop.firstChild);
-    cartDrop.appendChild(old);
-
-    // Inject our new visual: icon + label
-    const img = document.createElement("img");
-    img.className = "sv-cart-ico";
-    img.src = ICONS.cart;
-    img.alt = "";
-
-    const label = document.createElement("span");
-    label.className = "sv-cart-label";
-    label.textContent = "Coș";
-
-    cartDrop.insertBefore(label, cartDrop.firstChild);
-    cartDrop.insertBefore(img, cartDrop.firstChild);
   }
 
   function init() {
-    mountHeaderIcons();
+    mount();
 
-    // re-mount if header re-renders
     const mo = new MutationObserver(() => {
-      clearTimeout(window.__sv_hdr_t);
-      window.__sv_hdr_t = setTimeout(mountHeaderIcons, 120);
+      clearTimeout(window.__sv_t);
+      window.__sv_t = setTimeout(mount, 120);
     });
     mo.observe(document.documentElement, { childList: true, subtree: true });
   }
